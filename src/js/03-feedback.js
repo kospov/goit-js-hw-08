@@ -2,7 +2,18 @@
 
 const feedbackForm = document.querySelector('.feedback-form');
 const LOCALSTORAGE_KEY = "feedback-form-state";
-const formInputObj = {};
+const formInputObj = {
+    email: "",
+    message: "",
+};
+
+if (localStorage.getItem(LOCALSTORAGE_KEY) === null) {
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formInputObj));
+} ;
+
+feedbackForm.elements.email.value = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).email;
+
+feedbackForm.elements.message.value = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).message;
 
 feedbackForm.addEventListener('input', onFormInput);
 
