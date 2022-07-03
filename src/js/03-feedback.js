@@ -17,13 +17,15 @@ feedbackForm.elements.message.value = JSON.parse(localStorage.getItem(LOCALSTORA
 
 feedbackForm.addEventListener('input', throttle(onFormInput, 500));
 
-feedbackForm.addEventListener('submit', onFormInputSubmit);
+feedbackForm.addEventListener('submit', throttle(onFormInputSubmit, 500));
 
 function onFormInput(e) {
     formInputObj.email = feedbackForm.elements.email.value;
     formInputObj.message = feedbackForm.elements.message.value;
 
-   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formInputObj));
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formInputObj));
+    
+    console.log(formInputObj);
 }
 
 function onFormInputSubmit(e) {
