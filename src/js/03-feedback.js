@@ -25,7 +25,6 @@ function onFormInput(e) {
 
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formInputObj));
     
-    console.log(formInputObj);
 }
 
 function onFormInputSubmit(e) {
